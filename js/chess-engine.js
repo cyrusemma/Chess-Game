@@ -578,8 +578,8 @@ const ChessEngine = (() => {
 
     function toPGN(state, metadata = {}) {
         let pgn = '';
-        pgn += `[Event "${metadata.event || 'Regicide Chess Game'}"]\n`;
-        pgn += `[Site "Regicide Chess App"]\n`;
+        pgn += `[Event "${metadata.event || 'MASTER Chess Game'}"]\n`;
+        pgn += `[Site "MASTER Chess App"]\n`;
         pgn += `[Date "${new Date().toISOString().split('T')[0]}"]\n`;
         pgn += `[White "${metadata.white || 'White'}"]\n`;
         pgn += `[Black "${metadata.black || 'Black'}"]\n`;

@@ -72,7 +72,7 @@ const App = (() => {
                 <div class="home-content">
                     <div class="logo">
                         <span class="logo-icon">♚</span>
-                        <h1>Regicide Chess</h1>
+                        <h1>MASTER Chess</h1>
                     </div>
                     <nav class="menu">
                         <button onclick="App.showSetup('ai')">Play vs AI</button>

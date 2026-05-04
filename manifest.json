@@ -1,6 +1,6 @@
 {
-    "name": "Regicide Chess",
-    "short_name": "Regicide",
+    "name": "MASTER Chess",
+    "short_name": "MASTER",
     "description": "A beautiful chess experience with AI opponents, puzzles, and online play",
     "start_url": "/",
     "display": "standalone",

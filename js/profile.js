@@ -11,7 +11,7 @@ const Profile = (() => {
         { id: 'castles', name: 'Castles in the Sky', icon: '🏰', desc: 'Castle 10 times total' },
         { id: 'sharpshooter', name: 'Sharpshooter', icon: '🎯', desc: 'Solve 10 puzzles' },
         { id: 'grandmaster_pupil', name: "Grandmaster's Pupil", icon: '🧠', desc: 'Beat Level 8+ AI' },
-        { id: 'regicide', name: 'Regicide', icon: '👑', desc: 'Beat The King (Level 10)' },
+        { id: 'regicide', name: 'Chess Master', icon: '👑', desc: 'Beat The King (Level 10)' },
         { id: 'streak', name: 'Streak', icon: '🔥', desc: 'Win 5 games in a row' },
         { id: 'silent_storm', name: 'Silent Storm', icon: '🤫', desc: 'Win without losing any pieces' }
     ];

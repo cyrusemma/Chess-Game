@@ -1,4 +1,4 @@
-const CACHE_NAME = 'regicide-chess-v1';
+const CACHE_NAME = 'master-chess-v1';
 const ASSETS = [
     '/',
     '/index.html',
