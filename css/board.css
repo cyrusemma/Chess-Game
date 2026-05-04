@@ -2,13 +2,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: fit-content;
+    max-width: 100%;
 }
 
 .board-frame {
     background: var(--board-border);
-    padding: 12px;
-    border-radius: 4px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 30px rgba(201, 168, 76, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    padding: 8px;
+    border-radius: 12px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55), 0 0 22px rgba(201, 168, 76, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.05);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -57,26 +59,18 @@
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
-    width: min(70vmin, 560px);
-    height: min(70vmin, 560px);
+    width: min(62vmin, 500px);
+    height: min(62vmin, 500px);
     position: relative;
 }
 
-.chess-board.perspective-3d {
-    transform: perspective(1000px) rotateX(15deg);
-    transform-origin: center bottom;
-}
-
+.chess-board.perspective-3d,
 .chess-board.flipped {
-    transform: rotate(180deg);
-}
-
-.chess-board.flipped.perspective-3d {
-    transform: perspective(1000px) rotateX(15deg) rotate(180deg);
+    transform: none !important;
 }
 
 .chess-board.flipped .piece-img {
-    transform: rotate(180deg);
+    transform: none !important;
 }
 
 .square {

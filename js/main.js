@@ -17,14 +17,12 @@ const App = (() => {
     function loadSettings() {
         const theme = localStorage.getItem('regicide_theme') || 'classic';
         const pieceset = localStorage.getItem('regicide_pieceset') || 'cburnett';
-        const perspective = localStorage.getItem('regicide_perspective') !== 'false';
         const sound = localStorage.getItem('regicide_sound') !== 'false';
         const volume = parseFloat(localStorage.getItem('regicide_volume') || '0.7');
         const animations = localStorage.getItem('regicide_animations') !== 'false';
 
         Board.setTheme(theme);
         Board.setPieceSet(pieceset);
-        Board.setPerspective(perspective);
         SoundEngine.setEnabled(sound);
         SoundEngine.setVolume(volume);
         Animations.setEnabled(animations);
@@ -744,10 +742,6 @@ const App = (() => {
                     <div class="setting-row">
                         <label>Animations</label>
                         <input type="checkbox" ${animOn ? 'checked' : ''} onchange="Animations.setEnabled(this.checked);localStorage.setItem('regicide_animations',this.checked)">
-                    </div>
-                    <div class="setting-row">
-                        <label>3D Perspective</label>
-                        <input type="checkbox" ${Board.perspective3D ? 'checked' : ''} onchange="Board.setPerspective(this.checked)">
                     </div>
                     <div class="setting-row">
                         <label>Piece Set</label>

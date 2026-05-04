@@ -5,7 +5,7 @@ const Board = (() => {
     let legalMoves = [];
     let lastMove = null;
     let annotations = {};
-    let perspective3D = true;
+    let perspective3D = false;
     let pieceSet = 'cburnett';
     let theme = 'classic';
     let dragPiece = null;
@@ -39,7 +39,7 @@ const Board = (() => {
     function init(container) {
         boardEl = container;
         boardEl.innerHTML = '';
-        boardEl.className = 'chess-board' + (perspective3D ? ' perspective-3d' : '');
+        boardEl.className = 'chess-board';
 
         for (let r = 0; r < 8; r++) {
             for (let f = 0; f < 8; f++) {
@@ -83,14 +83,14 @@ const Board = (() => {
     }
 
     function setPerspective(val) {
-        perspective3D = val;
-        if (boardEl) boardEl.classList.toggle('perspective-3d', val);
-        localStorage.setItem('regicide_perspective', val);
+        perspective3D = false;
+        if (boardEl) boardEl.classList.remove('perspective-3d');
+        localStorage.setItem('regicide_perspective', 'false');
     }
 
     function setFlipped(val) {
-        flipped = val;
-        if (boardEl) boardEl.classList.toggle('flipped', val);
+        flipped = false;
+        if (boardEl) boardEl.classList.remove('flipped');
         render(Game.getState());
     }
 
