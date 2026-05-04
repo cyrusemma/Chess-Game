@@ -15,7 +15,7 @@ const App = (() => {
     }
 
     function loadSettings() {
-        const theme = localStorage.getItem('regicide_theme') || 'classic';
+        const theme = localStorage.getItem('regicide_theme') || 'chesscom-light';
         const pieceset = localStorage.getItem('regicide_pieceset') || 'cburnett';
         const sound = localStorage.getItem('regicide_sound') !== 'false';
         const volume = parseFloat(localStorage.getItem('regicide_volume') || '0.7');
@@ -195,7 +195,13 @@ const App = (() => {
         app.innerHTML = `
             <div class="screen game-screen">
                 <div class="game-layout">
-                    <div class="captured-tray top" id="captured-top"></div>
+                    <div class="game-left-panel clay-panel">
+                        <div class="captured-tray top" id="captured-top"></div>
+                        <div class="game-controls">
+                            <button id="undo-btn" onclick="if(Game.canUndo()){Game.undo();Board.clearSelection();renderScreen('game')}" ${!Game.canUndo() ? 'disabled' : ''}>↶ Undo</button>
+                            <button onclick="Game.resign()">⚐ Resign</button>
+                        </div>
+                    </div>
                     <div class="board-wrapper">
                         <div class="board-frame">
                             <div class="coord-labels rank-labels">
@@ -207,14 +213,10 @@ const App = (() => {
                             </div>
                         </div>
                     </div>
-                    <div class="captured-tray bottom" id="captured-bottom"></div>
-                    <div class="game-info" id="game-info">
+                    <div class="game-info clay-panel">
                         <div class="turn-indicator" id="turn-indicator"></div>
-                        <div class="game-controls">
-                            <button id="undo-btn" onclick="if(Game.canUndo()){Game.undo();Board.clearSelection();renderScreen('game')}" ${!Game.canUndo() ? 'disabled' : ''}>↶ Undo</button>
-                            <button onclick="Game.resign()">⚐ Resign</button>
-                        </div>
                         <div class="move-history" id="move-history"></div>
+                        <div class="captured-tray bottom" id="captured-bottom"></div>
                     </div>
                 </div>
             </div>
