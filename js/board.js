@@ -233,13 +233,15 @@ const Board = (() => {
         if (img) {
             dragPiece = img.cloneNode(true);
             dragPiece.className = 'piece-img dragging';
+            dragPiece.style.transition = 'none';
+            dragPiece.style.filter = 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7))';
             document.body.appendChild(dragPiece);
             const rect = sq.getBoundingClientRect();
             dragOffset.x = e.clientX - rect.left - rect.width / 2;
             dragOffset.y = e.clientY - rect.top - rect.height / 2;
             dragPiece.style.left = (e.clientX - rect.width / 2) + 'px';
             dragPiece.style.top = (e.clientY - rect.height / 2) + 'px';
-            img.style.opacity = '0.3';
+            img.style.opacity = '0.2';
         }
     }
 
@@ -248,6 +250,7 @@ const Board = (() => {
         const size = boardEl.querySelector('.square').getBoundingClientRect().width;
         dragPiece.style.left = (e.clientX - size / 2) + 'px';
         dragPiece.style.top = (e.clientY - size / 2) + 'px';
+        dragPiece.style.transform = 'scale(1.15)';
     }
 
     function onMouseUp(e) {
@@ -268,10 +271,26 @@ const Board = (() => {
             const r = parseInt(targetSq.dataset.rank);
             const f = parseInt(targetSq.dataset.file);
             if (r !== selectedSquare[0] || f !== selectedSquare[1]) {
-                onSquareClick(r, f);
-                return;
+                // Execute move directly from drag without calling onSquareClick
+                const state = Game.getState();
+                const result = Game.tryMove(selectedSquare, [r, f]);
+                if (result && result.needsPromotion) {
+                    showPromotionDialog(selectedSquare, [r, f], state.turn);
+                    selectedSquare = null;
+                    legalMoves = [];
+                    render(state);
+                    return;
+                }
+                if (result && result.executed) {
+                    lastMove = { from: selectedSquare, to: [r, f] };
+                    selectedSquare = null;
+                    legalMoves = [];
+                    render(state);
+                    return;
+                }
             }
         }
+        
         selectedSquare = null;
         legalMoves = [];
         render(Game.getState());

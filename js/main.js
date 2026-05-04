@@ -213,8 +213,6 @@ const App = (() => {
                     <div class="game-info" id="game-info">
                         <div class="turn-indicator" id="turn-indicator"></div>
                         <div class="game-controls">
-                            <button onclick="Board.setFlipped(!Board.flipped)">↕ Flip</button>
-                            <button onclick="Board.setPerspective(!Board.perspective3D)">◇ 3D</button>
                             <button id="undo-btn" onclick="if(Game.canUndo()){Game.undo();Board.clearSelection();renderScreen('game')}" ${!Game.canUndo() ? 'disabled' : ''}>↶ Undo</button>
                             <button onclick="Game.resign()">⚐ Resign</button>
                         </div>

@@ -14,9 +14,9 @@ const Animations = (() => {
         const dx = toRect.left - fromRect.left;
         const dy = toRect.top - fromRect.top;
 
-        // Smooth cubic-bezier easing for piece movement
-        img.style.transition = 'transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-        img.style.transform = `translate(${dx}px, ${dy}px) scale(1.1)`;
+        // Extra smooth animation with longer duration
+        img.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+        img.style.transform = `translate(${dx}px, ${dy}px) scale(1.08)`;
         img.style.zIndex = '100';
 
         setTimeout(() => {
@@ -24,7 +24,7 @@ const Animations = (() => {
             img.style.transition = '';
             img.style.zIndex = '';
             if (callback) callback();
-        }, 350);
+        }, 500);
     }
 
     function shakeSquare(el) {
